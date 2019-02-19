@@ -1,0 +1,124 @@
+-- drop view dfs.CLIENT_NAME_3_0.olap_campaign_message_w_promo_w_tdc_all;
+CREATE OR REPLACE VIEW dfs.CLIENT_NAME_3_0.olap_campaign_message_w_promo_w_tdc_all as 
+SELECT
+   CAST ( message_id as bigint ) as message_id 
+  ,CAST ( eml_mailing_audience_id as bigint ) as eml_mailing_audience_id 
+  ,CAST ( cmp_campaign_id as bigint ) as cmp_campaign_id 
+  ,CAST ( cmp_channel_id as varchar(128) ) as cmp_channel_id 
+  ,CAST ( cmp_channel_type as varchar(128) ) as cmp_channel_type 
+  ,CAST ( eml_mailing_id as bigint ) as eml_mailing_id  
+  ,CAST (NULLIF(business_date_time, 'NULL') as TIMESTAMP) as business_date_time 
+--  ,CONVERT_FROM(business_date_time,'TIMESTAMP_IMPALA') as business_date_time 
+  ,CAST ( brand_id as bigint ) as brand_id 
+  ,CAST ( customer_id as bigint ) as customer_id 
+  ,CAST ( member_id as bigint ) as member_id 
+  ,CAST ( membership_type as varchar(128) ) as membership_type
+  ,CAST ( eml_offer_description as varchar(128) ) as eml_offer_description 
+  ,CAST ( eml_triggered as varchar(128) ) as eml_triggered 
+  ,CAST ( eml_mailing_description as varchar(128) ) as eml_mailing_description 
+  ,CAST ( msg_sent_on as varchar(128) ) as msg_sent_on 
+  ,CAST ( msg_bounced_on as varchar(128) ) as msg_bounced_on 
+  ,CAST ( msg_opened_on as varchar(128) ) as msg_opened_on 
+  ,CAST ( msg_clicked_on as varchar(128) ) as msg_clicked_on 
+  ,CAST ( msg_unsubscribed_on as varchar(128) ) as msg_unsubscribed_on 
+  ,CAST ( msg_bounce_type as varchar(128) ) as msg_bounce_type 
+  ,CAST ( message_type as int ) as message_type 
+  ,CAST ( sent_count as bigint ) as sent_count 
+  ,CAST ( bounced_count as bigint ) as bounced_count 
+  ,CAST ( bounced_count_soft as bigint ) as bounced_count_soft 
+  ,CAST ( bounced_count_hard as bigint ) as bounced_count_hard 
+  ,CAST ( opened_count as bigint ) as opened_count 
+  ,CAST ( clicked_count as bigint ) as clicked_count 
+  ,CAST ( unsubscribed_count as bigint ) as unsubscribed_count 
+  ,CAST ( redeemed_promotions as bigint ) as redeemed_promotions 
+  ,CAST ( cmp_channel_push_segment_size as bigint ) as cmp_channel_push_segment_size 
+  ,CAST ( attached_promotions as bigint ) as attached_promotions 
+  ,CAST ( customer_guid as varchar(128) ) as customer_guid 
+  ,CAST ( is_targetable_member as int ) as is_targetable_member 
+  ,CAST ( mp_message_id as bigint ) as mp_message_id 
+  ,CAST ( offer_id as bigint ) as offer_id 
+  ,CAST ( mp_cmp_campaign_id as bigint ) as mp_cmp_campaign_id 
+  ,CAST ( mp_cmp_channel_id as varchar(128) ) as mp_cmp_channel_id 
+  ,CAST ( mp_cmp_channel_type as varchar(128) ) as mp_cmp_channel_type 
+  ,CAST ( cmp_msg_promo_counter as int ) as cmp_msg_promo_counter 
+  ,CAST ( cus_mix as varchar(128) ) as cus_mix 
+  ,CAST ( cus_net_sales_decile as int ) as cus_net_sales_decile 
+  ,CAST ( cus_net_sales_decile_centroid as double ) as cus_net_sales_decile_centroid 
+  ,CAST ( cus_frequency_mix as varchar(128) ) as cus_frequency_mix 
+  ,CAST ( cus_persona_type as varchar(128) ) as cus_persona_type 
+  ,CAST ( purchase_spend as varchar(128) ) as purchase_spend 
+  ,CAST ( purchase_spend_centroid as double ) as purchase_spend_centroid 
+  ,CAST ( purchase_frequency as varchar(128) ) as purchase_frequency 
+  ,CAST ( purchase_frequency_centroid as double ) as purchase_frequency_centroid 
+  ,CAST ( purchase_volume as varchar(128) ) as purchase_volume 
+  ,CAST ( purchase_volume_centroid as double ) as purchase_volume_centroid 
+  ,CAST ( purchase_recency as varchar(128) ) as purchase_recency 
+  ,CAST ( purchase_recency_centroid as double ) as purchase_recency_centroid 
+  ,CAST ( purchase_part_of_week as varchar(128) ) as purchase_part_of_week 
+  ,CAST ( purchase_part_of_week_centroid as double ) as purchase_part_of_week_centroid 
+  ,CAST ( cus_frequency_mix_absolute as double ) as cus_frequency_mix_absolute 
+  ,CAST ( optin_email as int ) as optin_email 
+  ,CAST ( optin_sms as int ) as optin_sms 
+  ,CAST ( optin_push as int ) as optin_push 
+  ,CAST ( optin_location_tracking as int ) as optin_location_tracking 
+  ,CAST ( birthdate as varchar(128) ) as birthdate 
+  ,CAST ( gender as varchar(128) ) as gender 
+  ,CAST ( acquisionsource as varchar(128) ) as acquisionsource 
+  ,CAST ( acquisionsourcegroup as varchar(128) ) as acquisionsourcegroup 
+  ,CAST ( country as varchar(128) ) as country 
+  ,CAST ( zip as varchar(128) ) as zip 
+  ,CAST ( NULLIF(joindate, '') as varchar(128) ) as joindate 
+  ,CAST ( cus_acq_date as varchar(128) ) as cus_acq_date 
+  ,CAST ( brand_name as varchar(128) ) as brand_name 
+  ,CAST ( business_date_dow as int ) as business_date_dow 
+  ,CAST ( business_date_dow_str as varchar(128) ) as business_date_dow_str 
+  ,CAST ( business_date_dow_abr_str as varchar(128) ) as business_date_dow_abr_str 
+  ,CAST ( business_date_week as int ) as business_date_week 
+  ,CAST ( business_date_week_str as varchar(128) ) as business_date_week_str 
+  ,CAST ( business_date_week_abr_str as varchar(128) ) as business_date_week_abr_str 
+  ,CAST ( business_date_month as int ) as business_date_month 
+  ,CAST ( business_date_month_str as varchar(128) ) as business_date_month_str 
+  ,CAST ( business_date_month_abr_str as varchar(128) ) as business_date_month_abr_str 
+  ,CAST ( business_date_quarter as int ) as business_date_quarter 
+  ,CAST ( business_date_quarter_str as varchar(128) ) as business_date_quarter_str 
+  ,CAST ( business_date_quarter_abr_str as varchar(128) ) as business_date_quarter_abr_str 
+  ,CAST ( business_date_year as int ) as business_date_year 
+  ,CAST ( business_date_dom as int ) as business_date_dom 
+  ,CAST ( fiscal_year as int ) as fiscal_year 
+  ,CAST ( fiscal_quarter as int ) as fiscal_quarter 
+  ,CAST ( fiscal_quarter_str as varchar(128) ) as fiscal_quarter_str 
+  ,CAST ( fiscal_quarter_abr_str as varchar(128) ) as fiscal_quarter_abr_str 
+  ,CAST ( fiscal_period_month as int ) as fiscal_period_month 
+  ,CAST ( fiscal_period_month_str as varchar(128) ) as fiscal_period_month_str 
+  ,CAST ( fiscal_period_month_abr_str as varchar(128) ) as fiscal_period_month_abr_str 
+  ,CAST ( fiscal_week as int ) as fiscal_week 
+  ,CAST ( fiscal_week_str as varchar(128) ) as fiscal_week_str 
+  ,CAST ( fiscal_week_abr_str as varchar(128) ) as fiscal_week_abr_str 
+  ,CAST ( cmp_campaign_name as varchar(128) ) as cmp_campaign_name 
+  ,CAST ( cmp_created_date as varchar(128) ) as cmp_created_date 
+  ,CAST ( cmp_description as varchar(128) ) as cmp_description 
+  ,CAST ( cmp_type as varchar(128) ) as cmp_type 
+  ,CAST ( cmp_trigerred as int ) as cmp_trigerred 
+  ,CAST ( cmp_product_camp_qty as int ) as cmp_product_camp_qty 
+  ,CAST ( cmp_product_camp_price as double ) as cmp_product_camp_price 
+  ,CAST ( cmp_product_camp_price_currency as varchar(128) ) as cmp_product_camp_price_currency 
+  ,CAST ( chn_cmp_channel_type as varchar(20) ) as chn_cmp_channel_type 
+  ,CAST ( chn_cmp_trigger as varchar(128) ) as chn_cmp_trigger 
+  ,CAST ( chn_cmp_triggerred as int ) as chn_cmp_triggerred 
+  ,CAST ( chn_cmp_mailing_desc as varchar(1024) ) as chn_cmp_mailing_desc 
+  ,CAST ( chn_cmp_mailing_subject as varchar(1024) ) as chn_cmp_mailing_subject 
+  ,CAST ( chn_cmp_channel_push_segment_size as bigint ) as chn_cmp_channel_push_segment_size 
+  ,CAST ( offer_name as varchar(128) ) as offer_name 
+  ,CAST ( pro_offertype_id as bigint ) as pro_offertype_id 
+  ,CAST ( offer_type as varchar(128) ) as offer_type 
+  ,CAST ( offer_description as varchar(128) ) as offer_description 
+  ,CAST (date_part ('year', NULLIF(cus_acq_date, '')) as int ) as year_of_joining
+,CAST ( 
+CASE 
+WHEN (DATEDIFF(Now(),from_unixtime(unix_timestamp(NULLIF(cus_acq_date, '') ,'yyyy-MM-dd'),'yyyy-MM-dd'))/365 + 1) < 0 THEN 0 
+WHEN (DATEDIFF(Now(),from_unixtime(unix_timestamp(NULLIF(cus_acq_date, '') ,'yyyy-MM-dd'),'yyyy-MM-dd'))/365 + 1) > 5 THEN 6 
+ELSE (DATEDIFF(Now(),from_unixtime(unix_timestamp(NULLIF(cus_acq_date, '') ,'yyyy-MM-dd'),'yyyy-MM-dd'))/365 + 1) 
+END as VARCHAR(12) ) as years_in_membership
+  ,CAST ( SUBSTRING(dir0,15) as date ) as business_date 
+FROM dfs.`/fishbowl/CLIENT_NAME/3_0/view/olap_campaign_message_w_promo_w_tdc_all`;
+REFRESH TABLE METADATA dfs.`/fishbowl/CLIENT_NAME/3_0/view/olap_campaign_message_w_promo_w_tdc_all`;
