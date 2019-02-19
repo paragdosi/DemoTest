@@ -1,4 +1,3 @@
-----Test Fun
 
 -- drop view dfs.CLIENT_NAME_3_0.olap_campaign_message_w_promo_w_tdc_all;
 CREATE OR REPLACE VIEW dfs.CLIENT_NAME_3_0.olap_campaign_message_w_promo_w_tdc_all as 
