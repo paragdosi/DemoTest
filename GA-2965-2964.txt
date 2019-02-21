@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 
+=======
+----Test Fun
+Parag Dosi
+>>>>>>> 1c7355b5d2997a9c99400330ed6459d32bf1cbb8
 -- drop view dfs.CLIENT_NAME_3_0.olap_campaign_message_w_promo_w_tdc_all;
 CREATE OR REPLACE VIEW dfs.CLIENT_NAME_3_0.olap_campaign_message_w_promo_w_tdc_all as 
 SELECT
