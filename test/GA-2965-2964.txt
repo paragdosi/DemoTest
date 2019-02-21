@@ -128,3 +128,5 @@ END as VARCHAR(12) ) as years_in_membership
   ,CAST ( SUBSTRING(dir0,15) as date ) as business_date 
 FROM dfs.`/fishbowl/CLIENT_NAME/3_0/view/olap_campaign_message_w_promo_w_tdc_all`;
 REFRESH TABLE METADATA dfs.`/fishbowl/CLIENT_NAME/3_0/view/olap_campaign_message_w_promo_w_tdc_all`;
+
+Testing Parag DOsi
