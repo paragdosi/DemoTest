@@ -136,6 +136,13 @@ Now I am in the Development Branch,
 
 Now I am chaning
 
+<<<<<<< HEAD
+Now I am in the Development brach to check conflict issue
+=======
 
 
 Now I am Master Branch to check conflict issue
+>>>>>>> 940f6ad4dbaf77f4ebdb5e085f7d1165d9d23f55
+
+
+Now I am in the Development Branch
